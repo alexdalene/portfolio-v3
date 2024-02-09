@@ -11,8 +11,8 @@
 <style>
 	:global(*) {
 		&::selection {
-			background-color: #000;
-			color: #fff;
+			background-color: var(--black-color);
+			color: var(--white-color);
 		}
 	}
 

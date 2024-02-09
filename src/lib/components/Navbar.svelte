@@ -42,13 +42,13 @@
 		background: transparent;
 		position: sticky;
 		top: 0;
-		z-index: 2;
+		z-index: 10;
 	}
 
 	.navbar-logo {
 		font-size: 3rem;
 		font-family: var(--font-heading);
-		z-index: 2;
+		z-index: 10;
 		line-height: 1;
 	}
 
@@ -66,7 +66,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		border-radius: 4px;
-		z-index: 2;
+		z-index: 10;
 		cursor: pointer;
 		transition: background-color 200ms ease-out;
 	}
@@ -94,6 +94,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		z-index: 1;
+		z-index: 9;
 	}
 </style>

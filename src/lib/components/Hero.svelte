@@ -18,6 +18,7 @@
 		src="/hero-600w.webp"
 		alt="Michael Angelo's painting on top of the Palace of Versailles"
 	/>
+
 	<div class="top-right">
 		<svg
 			width="13"
@@ -46,6 +47,36 @@
 			/>
 		</svg>
 	</div>
+
+	<div class="bottom-left">
+		<svg
+			width="13"
+			height="13"
+			viewBox="0 0 13 13"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			class="svg-top-left"
+		>
+			<path
+				d="M0.000212396 0H13.0002C2.87774 0 0.163678 7.61338 0.000212396 12.1365V13C-0.0102433 12.7282 -0.0107289 12.4392 0.000212396 12.1365V0Z"
+				fill="#currentColor"
+			/>
+		</svg>
+
+		<svg
+			width="13"
+			height="13"
+			viewBox="0 0 13 13"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			class="svg-bottom-right"
+		>
+			<path
+				d="M0.000212396 0H13.0002C2.87774 0 0.163678 7.61338 0.000212396 12.1365V13C-0.0102433 12.7282 -0.0107289 12.4392 0.000212396 12.1365V0Z"
+				fill="#currentColor"
+			/>
+		</svg>
+	</div>
 </div>
 
 <style>
@@ -55,7 +86,7 @@
 		height: auto;
 		overflow: hidden;
 		z-index: -1;
-		border-radius: 2rem 0 2rem 2rem;
+		border-radius: 2rem 0 2rem 0;
 	}
 
 	.img {
@@ -76,25 +107,55 @@
 		height: 4.5rem;
 		background: var(--white-color);
 		border-bottom-left-radius: 2rem;
+
+		& .svg-top-left {
+			position: absolute;
+			top: 0;
+			right: 8.5rem;
+			fill: var(--white-color);
+			transform: rotate(90deg);
+			height: auto;
+			width: 2rem;
+		}
+
+		& .svg-bottom-right {
+			position: absolute;
+			top: 4.5rem;
+			right: 0;
+			fill: var(--white-color);
+			transform: rotate(90deg);
+			height: auto;
+			width: 2rem;
+		}
 	}
 
-	.svg-top-left {
+	.bottom-left {
 		position: absolute;
-		top: 0;
-		right: 8.5rem;
-		fill: var(--white-color);
-		transform: rotate(90deg);
-		height: auto;
-		width: 2rem;
-	}
+		bottom: 0;
+		left: 0;
+		width: 8.5rem;
+		height: 4.5rem;
+		background: var(--white-color);
+		border-top-right-radius: 2rem;
 
-	.svg-bottom-right {
-		position: absolute;
-		top: 4.5rem;
-		right: 0;
-		fill: var(--white-color);
-		transform: rotate(90deg);
-		height: auto;
-		width: 2rem;
+		& .svg-top-left {
+			position: absolute;
+			bottom: 4.5rem;
+			left: 0;
+			fill: var(--white-color);
+			transform: rotate(-90deg);
+			height: auto;
+			width: 2rem;
+		}
+
+		& .svg-bottom-right {
+			position: absolute;
+			bottom: 0;
+			left: 8.5rem;
+			fill: var(--white-color);
+			transform: rotate(-90deg);
+			height: auto;
+			width: 2rem;
+		}
 	}
 </style>
