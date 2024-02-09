@@ -53,7 +53,7 @@
 	}
 
 	.navbar-logo.open {
-		color: #fff;
+		color: var(--white-color);
 	}
 
 	.navbar-btn {
@@ -76,16 +76,20 @@
 	}
 
 	.navbar-btn.open {
-		background: #000;
-		color: #fff;
-		border-color: #fff;
+		background: var(--black-color);
+		color: var(--white-color);
+		border-color: var(--white-color);
+	}
+
+	.navbar-btn.open:hover {
+		background-color: #ffffff20;
 	}
 
 	.navbar-open {
 		position: fixed;
 		inset: 0;
-		background: #000;
-		color: #fff;
+		background: var(--black-color);
+		color: var(--white-color);
 		padding: 1rem;
 		display: flex;
 		flex-direction: column;

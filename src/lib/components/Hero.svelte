@@ -1,35 +1,22 @@
 <script>
-	import { spring } from "svelte/motion";
-
-	let x = spring(0, { stiffness: 0.005, damping: 0.9 });
-    let y = spring(0, { stiffness: 0.005, damping: 0.9 });
-
-    function handleMouseMove(event) {
-        let moveX = event.clientX - window.innerWidth / 2;
-        let moveY = event.clientY - window.innerHeight / 2;
-
-        // Limit the movement
-        moveX = Math.max(Math.min(moveX, 25), -25);
-        moveY = Math.max(Math.min(moveY, 25), -25);
-
-        x.set(moveX);
-        y.set(moveY);
-    }
-
-	function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
+    function handleMouseMove(e) {
+		const dampingFactor = 0.01;
+		const dampedX = e.clientX * dampingFactor;
+		const dampedY = e.clientY * dampingFactor;
+		document.documentElement.style.setProperty('--damped-x', dampedX + 'px');
+		document.documentElement.style.setProperty('--damped-y', dampedY + 'px');
     }
 </script>
 
-<svelte:window on:mousemove={handleMouseMove} on:mouseleave={handleMouseLeave}/>
+<svelte:window on:mousemove={handleMouseMove} />
 
 <div class="img-container">
 	<img
 		class="img"
-		src="/hero.webp"
+		srcset="/hero-400w.webp 400w, /hero-600w.webp 600w"
+		sizes="(max-width: 600px) 400px, 600px"
+		src="/hero-600w.webp"
 		alt="Michael Angelo's painting on top of the Palace of Versailles"
-		style="transform: translate3d({$x}px, {$y}px, 0)"
 	/>
 	<div class="top-right">
 		<svg
@@ -78,6 +65,7 @@
 		object-position: center;
 		aspect-ratio: 16 / 9;
 		scale: 1.2;
+		transform: translate(var(--damped-x), var(--damped-y));
 	}
 
 	.top-right {
@@ -86,7 +74,7 @@
 		right: 0;
 		width: 8.5rem;
 		height: 4.5rem;
-		background: #fff;
+		background: var(--white-color);
 		border-bottom-left-radius: 2rem;
 	}
 
@@ -94,7 +82,7 @@
 		position: absolute;
 		top: 0;
 		right: 8.5rem;
-		fill: #fff;
+		fill: var(--white-color);
 		transform: rotate(90deg);
 		height: auto;
 		width: 2rem;
@@ -104,7 +92,7 @@
 		position: absolute;
 		top: 4.5rem;
 		right: 0;
-		fill: #fff;
+		fill: var(--white-color);
 		transform: rotate(90deg);
 		height: auto;
 		width: 2rem;

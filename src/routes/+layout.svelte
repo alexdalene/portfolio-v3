@@ -9,11 +9,17 @@
 </main>
 
 <style>
+	:global(*) {
+		&::selection {
+			background-color: #000;
+			color: #fff;
+		}
+	}
+
 	main {
-		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		justify-content: end;
-		min-height: calc(80svh - 80px);
+		width: 100%;
+		margin-top: -80px;
 	}
 </style>
