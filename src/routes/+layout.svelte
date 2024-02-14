@@ -1,12 +1,17 @@
 <script>
 	import Navbar from '$lib/components/Navbar.svelte';
+	import { page } from '$app/stores';
+	import Loading from '$lib/components/Loading.svelte';
 </script>
 
-<Navbar />
-
-<main>
-	<slot />
-</main>
+{#if $page.loading}
+	<Loading />
+{:else}
+	<Navbar />
+	<main>
+		<slot />
+	</main>
+{/if}
 
 <style>
 	:global(*) {

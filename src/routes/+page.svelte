@@ -1,88 +1,88 @@
 <script>
-	import Hero from '$lib/components/Hero.svelte';
+	import Image from '$lib/components/Image.svelte';
+	import History from '$lib/components/History.svelte';
+	import Skills from '$lib/components/Skills.svelte';
+
 	import { gsap, ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
-		let sections = gsap.utils.toArray('.section');
-
-		sections.forEach((section) => {
-			ScrollTrigger.create({
-				trigger: section,
-				start: 'top top',
-				end: () => "+=" + section.offsetHeight,
-				pin: true,
-				scrub: 1,
-			});
+		gsap.from('.scroll-indicator', {
+			y: 6,
+			duration: 0.6,
+			repeat: -1,
+			yoyo: true,
+			ease: 'power1.inOut'
 		});
 
-		gsap.to('.img-skills', {
+		gsap.to('.scroll-indicator', {
 			scrollTrigger: {
-				trigger: '.skills',
-				start: '-=400px center',
-				end: '+=200%',
-				scrub: 2,
+				trigger: '.scroll-indicator',
+				start: 'top 80%',
+				end: 'bottom 20%'
 			},
-			x: "-20%",
+			opacity: 0,
+			duration: 0.2
 		});
-	})
 
+		gsap.to('.hero', {
+			scrollTrigger: {
+				trigger: '.hero',
+				start: 'top top',
+				end: '+=100%',
+				scrub: 1,
+				pin: true,
+				ease: 'none',
+			},
+			yPercent: -20,
+		});
+	});
 </script>
 
-<section class="section hero">
-	<div>
-		<Hero />
+<svelte:head>
+	<title>Alex Dalene - Frontend Utvikler</title>
+	<meta
+		name="description"
+		content="Alex Dalene, efaren Frontend Utvikler med erfaring fra små- til mellomstore bedrifter."
+	/>
+</svelte:head>
 
-		<h1>Frontend_utvikler</h1>
-		<p>
-			Jeg er en kreativ og løsningsorientert webutvikler med en lidenskap for design og teknologi. Jeg
-			har jobbet med alt fra små- til mellomstore bedrifter og har erfaring med å utvikle og vedlikeholde nettsider.
-		</p>
+<section class="hero">
+	<div>
+		<Image />
 	</div>
-	<span class="material-symbols-outlined">expand_more</span>
 </section>
 
-<section class="section skills">
-	<div class="img-skills-container">
-		<img class="img-skills" src="https://skillicons.dev/icons?i=js,ts,tailwind,svelte,jest,git,nodejs,express,mysql,mongo" alt="list of skills that alex has">
-	</div>
+<section class="about">
 	<div>
-		<h2>Skills</h2>
+		<h1>OM MEG</h1>
 		<p>
-			Jeg har opparbeidet meg en rekke ferdigheter gjennom årene. Her er noen av de jeg er mest komfortabel med:
-		</p>
-		<ul>
-			<li>JavaScript</li>
-			<li>TypeScript</li>
-			<li>Tailwind CSS</li>
-			<li>Svelte</li>
-			<li>Jest</li>
-			<li>Git</li>
-			<li>Node.js</li>
-			<li>Express</li>
-			<li>MySQL</li>
-			<li>MongoDB</li>
-		</ul>
-		<p>
-			For en fullstendig liste over ferdigheter, kan du sjekke ut min <a href="https://github.com/alexdalene" target="_blank" class="link">GitHub <span class="material-symbols-outlined">north_east</span></a> profil.
+			Jeg er en kreativ og løsningsorientert webutvikler med en lidenskap for design og teknologi.
 		</p>
 	</div>
 </section>
 
-<section class="section projects">
+<Skills />
+
+<section class="experience">
 	<div>
-		<h2>Prosjekter</h2>
+		<h1>ERFARING</h1>
 		<p>
-			Jeg er en kreativ og løsningsorientert webutvikler med en lidenskap for design og teknologi. Jeg
-			har jobbet med alt fra små- til mellomstore bedrifter og har erfaring med å utvikle og vedlikeholde nettsider.
+			Jeg har jobbet med alt fra små til mellomstore bedrifter og vet hva som kreves for å levere gode resultater.
 		</p>
 	</div>
 </section>
+
+<History />
+
+<div class="scroll-indicator">
+	<span class="material-symbols-outlined arrow"> arrow_drop_down </span>
+</div>
 
 <style>
-	.section {
+	section {
 		min-height: 100svh;
 		min-width: 100%;
 		display: flex;
@@ -99,56 +99,57 @@
 		}
 	}
 
-	.hero {
-		& span {
-			font-size: 3rem;
-			position: absolute;
-			bottom: 0;
-			margin-bottom: 3rem;
+	.about {
+		& h1 {
+			font-size: 1rem;
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+			font-weight: 400;
+		}
+
+		& p {
+			font-size: 4rem;
+			font-weight: 700;
+			line-height: 1.3;
+		}
+
+		& div {
+			width: 100%;
+			max-width: 968px;
 		}
 	}
 
-	.skills {
-		background-color: #82816D;
-		z-index: 1;
-
-		& .img-skills-container {
-			min-width: 100%;
-			overflow: hidden;
-			padding-block: 2rem;
-			transform: translateY(-5rem);
+	.experience {
+		& h1 {
+			font-size: 1rem;
+			text-transform: uppercase;
+			margin-bottom: 2rem;
+			font-weight: 400;
 		}
 
-		& .img-skills {
-			min-width: fit-content;
-			height: 20rem;
-			object-fit: cover;
-			opacity: 0.4;
+		& p {
+			font-size: 4rem;
+			font-weight: 700;
+			line-height: 1.3;
+		}
+
+		& div {
+			width: 100%;
+			max-width: 968px;
 		}
 	}
 
-	.projects {
-		z-index: 2;
-	}
+	.scroll-indicator {
+		position: absolute;
+		bottom: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
 
-	h1, h2 {
-		font-size: 1rem;
-		text-transform: uppercase;
-	}
-
-	h1 {
-		margin-top: 2rem;
-	}
-
-	.link {
-		color: var(--black-color);
-		text-decoration: underline;
-
-		& span {
-			font-size: 1.2rem;
-			position: relative;
-			top: 0.2rem;
-			margin-left: -0.5rem;
+		& .arrow {
+			font-size: 2rem;
+			color: var(--black-color);
 		}
 	}
 </style>

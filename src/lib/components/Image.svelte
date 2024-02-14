@@ -1,11 +1,11 @@
 <script>
-    function handleMouseMove(e) {
+	function handleMouseMove(e) {
 		const dampingFactor = 0.01;
 		const dampedX = e.clientX * dampingFactor;
 		const dampedY = e.clientY * dampingFactor;
 		document.documentElement.style.setProperty('--damped-x', dampedX + 'px');
 		document.documentElement.style.setProperty('--damped-y', dampedY + 'px');
-    }
+	}
 </script>
 
 <svelte:window on:mousemove={handleMouseMove} />
@@ -85,7 +85,6 @@
 		width: 100%;
 		height: auto;
 		overflow: hidden;
-		z-index: -1;
 		border-radius: 2rem 0 2rem 0;
 	}
 

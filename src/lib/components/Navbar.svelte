@@ -61,7 +61,8 @@
 		font-size: 14px;
 		font-weight: 500;
 		padding: 0.5rem 1rem;
-		border: 1px solid #000;
+		border: 1px solid var(--black-color);
+		color: var(--black-color);
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
