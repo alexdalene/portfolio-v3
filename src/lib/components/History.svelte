@@ -10,12 +10,23 @@
 				trigger: '.history .item',
 				start: 'top bottom',
 				end: 'bottom center',
-				scrub: 1,
+				scrub: 1
 			},
 			opacity: 0,
 			yPercent: 100,
 			duration: 0.6,
 			stagger: 0.2
+		});
+
+		gsap.to('.history', {
+			scrollTrigger: {
+				trigger: '.history',
+				start: 'top bottom',
+				end: 'bottom center',
+				scrub: 1,
+				ease: 'none'
+			},
+			yPercent: -20
 		});
 	});
 </script>
@@ -70,6 +81,8 @@
 	.history {
 		height: auto;
 		min-width: 100%;
+		background-color: var(--black-color);
+		color: var(--white-color);
 	}
 
 	.heading {
@@ -86,14 +99,14 @@
 	}
 
 	.item-wrapper {
-		border-bottom: 0.5px solid #373133;
-		background-color: var(--black-color);
-		color: var(--white-color);
+		border-bottom: 0.5px solid #d6d7d3;
+		background-color: var(--white-color);
+		color: var(--black-color);
 		transition: all 200ms ease-in-out;
 
 		&:hover {
-			background-color: var(--white-color);
-			color: var(--black-color);
+			background-color: var(--black-color);
+			color: var(--white-color);
 		}
 
 		&:last-child {

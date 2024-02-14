@@ -34,9 +34,9 @@
 				end: '+=100%',
 				scrub: 1,
 				pin: true,
-				ease: 'none',
+				ease: 'none'
 			},
-			yPercent: -20,
+			yPercent: -20
 		});
 	});
 </script>
@@ -70,7 +70,8 @@
 	<div>
 		<h1>ERFARING</h1>
 		<p>
-			Jeg har jobbet med alt fra små til mellomstore bedrifter og vet hva som kreves for å levere gode resultater.
+			Jeg har jobbet med alt fra små til mellomstore bedrifter og vet hva som kreves for å levere
+			gode resultater.
 		</p>
 	</div>
 </section>
@@ -110,7 +111,7 @@
 		& p {
 			font-size: 4rem;
 			font-weight: 700;
-			line-height: 1.3;
+			line-height: 1.2;
 		}
 
 		& div {
@@ -120,6 +121,9 @@
 	}
 
 	.experience {
+		background-color: var(--black-color);
+		color: var(--white-color);
+
 		& h1 {
 			font-size: 1rem;
 			text-transform: uppercase;
@@ -130,7 +134,7 @@
 		& p {
 			font-size: 4rem;
 			font-weight: 700;
-			line-height: 1.3;
+			line-height: 1.2;
 		}
 
 		& div {

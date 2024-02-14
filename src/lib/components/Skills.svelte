@@ -10,7 +10,7 @@
 				trigger: '.skills .item',
 				start: 'top bottom',
 				end: 'bottom center',
-				scrub: 1,
+				scrub: 1
 			},
 			opacity: 0,
 			yPercent: 100,
