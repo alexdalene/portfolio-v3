@@ -22,7 +22,7 @@
 			scrollTrigger: {
 				trigger: '.scroll-indicator',
 				start: 'top 80%',
-				end: 'bottom 20%'
+				end: 'bottom 40%'
 			},
 			opacity: 0,
 			duration: 0.2
@@ -166,9 +166,9 @@
 		<h3>Alex Dalene</h3>
 	</div>
 	<div class="second-col">
-		<a href=".">X</a>
-		<a href=".">GitHub</a>
-		<a href=".">LinkedIn</a>
+		<a href="https://twitter.com/xenelad" target="_blank">X/Twitter</a>
+		<a href="https://github.com/alexdalene" target="_blank">GitHub</a>
+		<a href="https://www.linkedin.com/in/alex-dalene/" target="_blank">LinkedIn</a>
 	</div>
 </footer>
 
@@ -303,7 +303,7 @@
 	}
 
 	.scroll-indicator {
-		position: absolute;
+		position: fixed;
 		bottom: 2rem;
 		display: flex;
 		align-items: center;
