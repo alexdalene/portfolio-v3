@@ -5,9 +5,9 @@
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
-		gsap.from('.skills .item', {
+		gsap.from('.clients .item', {
 			scrollTrigger: {
-				trigger: '.skills',
+				trigger: '.clients',
 				start: 'top bottom',
 				end: 'bottom center',
 				scrub: 1
@@ -20,25 +20,30 @@
 	});
 </script>
 
-<section class="skills">
+<section class="clients">
 	<div class="heading">
-		<h2>Hva jeg gjør</h2>
+		<h2>Klienter</h2>
 	</div>
 	<div class="container">
 		<div>
 			<div class="item-wrapper">
 				<div class="item">
-					<h3>Utvikling</h3>
+					<h3>Omsorgskollektivet</h3>
 				</div>
 			</div>
 			<div class="item-wrapper">
 				<div class="item">
-					<h3>Design</h3>
+					<h3>Le Monde Tapas</h3>
 				</div>
 			</div>
 			<div class="item-wrapper">
 				<div class="item">
-					<h3>Motion</h3>
+					<h3>Guttas Campus</h3>
+				</div>
+			</div>
+			<div class="item-wrapper">
+				<div class="item">
+					<h3>Sound of Happiness</h3>
 				</div>
 			</div>
 		</div>
@@ -46,7 +51,7 @@
 </section>
 
 <style>
-	.skills {
+	.clients {
 		height: auto;
 		min-width: 100%;
 	}
@@ -88,9 +93,6 @@
 		margin: 0 auto;
 		padding-block: 1rem;
 		padding-inline: 0.5rem;
-		display: grid;
-		grid-template-columns: 0.25fr 1fr;
-		align-items: baseline;
 	}
 
 	h3 {
@@ -98,7 +100,7 @@
 		text-transform: uppercase;
 
 		@media (max-width: 768px) {
-			font-size: 4rem;
+			font-size: 3rem;
 		}
 	}
 </style>

@@ -83,9 +83,15 @@
 	.img-container {
 		position: relative;
 		width: 100%;
+		max-width: 568px;
 		height: auto;
 		overflow: hidden;
 		border-radius: 2rem 0 2rem 0;
+		margin: 0 auto;
+
+		@media (max-width: 768px) {
+			transform: rotate(90deg);
+		}
 	}
 
 	.img {

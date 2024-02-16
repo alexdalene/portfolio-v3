@@ -30,7 +30,13 @@
 </header>
 
 {#if open}
-	<nav class="navbar-open" transition:fade={{ duration: 200, easing: cubicOut }}></nav>
+	<nav class="navbar-open" transition:fade={{ duration: 200, easing: cubicOut }}>
+		<a href="#about">Om</a>
+		<a href="#skills">Ferdigheter</a>
+		<a href="#clients">Klienter</a>
+		<a href="#history">Historie</a>
+		<a href="#contact">Kontakt</a>
+	</nav>
 {/if}
 
 <style>
@@ -38,7 +44,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 1rem 1rem;
+		padding: 1rem 0.5rem;
 		background: transparent;
 		position: sticky;
 		top: 0;
@@ -91,10 +97,28 @@
 		inset: 0;
 		background: var(--black-color);
 		color: var(--white-color);
-		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
+		justify-content: flex-end;
 		z-index: 9;
+
+		& a {
+			font-size: 3rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: var(--white-color);
+			width: 100%;
+			text-align: end;
+			padding-right: 1rem;
+			background-color: var(--black-color);
+			transition: all 200ms ease-out;
+			padding-block: 1rem;
+
+			&:hover {
+				color: var(--black-color);
+				background-color: var(--white-color);
+			}
+		}
 	}
 </style>

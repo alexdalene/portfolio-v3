@@ -7,7 +7,7 @@
 
 		gsap.from('.history .item', {
 			scrollTrigger: {
-				trigger: '.history .item',
+				trigger: '.history',
 				start: 'top bottom',
 				end: 'bottom center',
 				scrub: 1
@@ -18,16 +18,16 @@
 			stagger: 0.2
 		});
 
-		gsap.to('.history', {
-			scrollTrigger: {
-				trigger: '.history',
-				start: 'top bottom',
-				end: 'bottom center',
-				scrub: 1,
-				ease: 'none'
-			},
-			yPercent: -20
-		});
+		// gsap.to('.history', {
+		// 	scrollTrigger: {
+		// 		trigger: '.history',
+		// 		start: 'top bottom',
+		// 		end: 'bottom center',
+		// 		scrub: 1,
+		// 		ease: 'none'
+		// 	},
+		// 	yPercent: -10
+		// });
 	});
 </script>
 
@@ -96,6 +96,7 @@
 		text-transform: uppercase;
 		margin-block: 2rem;
 		font-weight: 400;
+		padding-left: 0.5rem;
 	}
 
 	.item-wrapper {
@@ -119,9 +120,20 @@
 		max-width: var(--max-width);
 		margin: 0 auto;
 		padding-block: 3rem;
+		padding-inline: 0.5rem;
 		display: grid;
 		grid-template-columns: 0.25fr 1fr;
 		align-items: baseline;
+		gap: 1rem;
+
+		@media (max-width: 768px) {
+			& div {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				text-align: end;
+			}
+		}
 	}
 
 	h3 {
