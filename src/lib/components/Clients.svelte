@@ -28,7 +28,7 @@
 		<div>
 			<div class="item-wrapper">
 				<div class="item">
-					<h3>Omsorgskollektivet</h3>
+					<h3>Omsorgs kollektivet</h3>
 				</div>
 			</div>
 			<div class="item-wrapper">
