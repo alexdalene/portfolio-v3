@@ -15,9 +15,9 @@
 		on:click={() => (open = !open)}
 	>
 		{#if open}
-			CLOSE
+			LUKK
 		{:else}
-			MENU
+			MENY
 		{/if}
 		<span class="material-symbols-outlined">
 			{#if open}

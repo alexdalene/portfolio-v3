@@ -1,5 +1,6 @@
 <script>
 	import { gsap, ScrollTrigger } from '$lib/gsap';
+
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -12,12 +13,13 @@
 				end: 'bottom center',
 				scrub: 1
 			},
-			opacity: 0,
 			yPercent: 100,
 			duration: 0.6,
 			stagger: 0.2
 		});
 	});
+
+	const skills = ['Utvikling', 'UI/UX', 'Motion'];
 </script>
 
 <section class="skills">
@@ -26,21 +28,13 @@
 	</div>
 	<div class="container">
 		<div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Utvikling</h3>
+			{#each skills as skill}
+				<div class="item-wrapper">
+					<div class="item">
+						<h3>{skill}</h3>
+					</div>
 				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Design</h3>
-				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Motion</h3>
-				</div>
-			</div>
+			{/each}
 		</div>
 	</div>
 </section>

@@ -1,5 +1,6 @@
 <script>
 	import { gsap, ScrollTrigger } from '$lib/gsap';
+
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -12,23 +13,34 @@
 				end: 'bottom center',
 				scrub: 1
 			},
-			opacity: 0,
 			yPercent: 100,
 			duration: 0.6,
 			stagger: 0.2
 		});
-
-		// gsap.to('.history', {
-		// 	scrollTrigger: {
-		// 		trigger: '.history',
-		// 		start: 'top bottom',
-		// 		end: 'bottom center',
-		// 		scrub: 1,
-		// 		ease: 'none'
-		// 	},
-		// 	yPercent: -10
-		// });
 	});
+
+	const history = [
+		{
+			year: 'NÅ',
+			title: 'Frontend Utvikler',
+			company: 'RePlan AS'
+		},
+		{
+			year: '2022',
+			title: 'Daglig Leder',
+			company: 'Pizzabakeren Ranheim'
+		},
+		{
+			year: '2021',
+			title: 'Medarbeider',
+			company: 'ARK Bokhandel'
+		},
+		{
+			year: '2019',
+			title: 'Truckfører',
+			company: 'BASF Sandefjord'
+		}
+	];
 </script>
 
 <section class="history">
@@ -37,42 +49,19 @@
 	</div>
 	<div class="container">
 		<div>
-			<div class="item-wrapper">
-				<div class="item">
-					<span>NÅ</span>
-					<div>
-						<h3>Frontend Utvikler</h3>
-						<p>RePlan AS</p>
+			{#each history as item}
+				<div class="item-wrapper">
+					<div class="item">
+						<div>
+							<h3>{item.year}</h3>
+						</div>
+						<div>
+							<h3>{item.company}</h3>
+							<p>{item.title}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<span>2022</span>
-					<div>
-						<h3>Daglig Leder</h3>
-						<p>Pizzabakeren Ranheim</p>
-					</div>
-				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<span>2021</span>
-					<div>
-						<h3>Medarbeider</h3>
-						<p>ARK Bokhandel</p>
-					</div>
-				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<span>2019</span>
-					<div>
-						<h3>Truckfører</h3>
-						<p>BASF Sandefjord</p>
-					</div>
-				</div>
-			</div>
+			{/each}
 		</div>
 	</div>
 </section>

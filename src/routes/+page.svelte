@@ -4,7 +4,7 @@
 	import Skills from '$lib/components/Skills.svelte';
 	import Clients from '$lib/components/Clients.svelte';
 
-	import { gsap, ScrollTrigger, TextPlugin } from '$lib/gsap';
+	import { gsap, ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -25,6 +25,7 @@
 				end: 'bottom 40%'
 			},
 			opacity: 0,
+			display: 'none',
 			duration: 0.2
 		});
 

@@ -1,5 +1,6 @@
 <script>
 	import { gsap, ScrollTrigger } from '$lib/gsap';
+
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -12,12 +13,13 @@
 				end: 'bottom center',
 				scrub: 1
 			},
-			opacity: 0,
 			yPercent: 100,
 			duration: 0.6,
 			stagger: 0.2
 		});
 	});
+
+	const clients = ['Omsorgs kollektivet', 'Le Monde Tapas', 'Guttas Campus', 'Sound of Happiness'];
 </script>
 
 <section class="clients">
@@ -26,26 +28,13 @@
 	</div>
 	<div class="container">
 		<div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Omsorgs kollektivet</h3>
+			{#each clients as client}
+				<div class="item-wrapper">
+					<div class="item">
+						<h3>{client}</h3>
+					</div>
 				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Le Monde Tapas</h3>
-				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Guttas Campus</h3>
-				</div>
-			</div>
-			<div class="item-wrapper">
-				<div class="item">
-					<h3>Sound of Happiness</h3>
-				</div>
-			</div>
+			{/each}
 		</div>
 	</div>
 </section>
