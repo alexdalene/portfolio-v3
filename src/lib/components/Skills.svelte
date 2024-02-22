@@ -3,20 +3,26 @@
 
 	import { onMount } from 'svelte';
 
-	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
+	let ctx;
 
-		gsap.from('.skills .item', {
-			scrollTrigger: {
-				trigger: '.skills',
-				start: 'top bottom',
-				end: 'bottom center',
-				scrub: 1
-			},
-			yPercent: 100,
-			duration: 0.6,
-			stagger: 0.2
+	onMount(() => {
+		ctx = gsap.context(() => {
+			gsap.registerPlugin(ScrollTrigger);
+
+			gsap.from('.skills .item', {
+				scrollTrigger: {
+					trigger: '.skills',
+					start: 'top bottom',
+					end: 'bottom center',
+					scrub: 1
+				},
+				yPercent: 100,
+				duration: 0.6,
+				stagger: 0.2
+			});
 		});
+
+		return () => ctx.revert();
 	});
 
 	const skills = ['Utvikling', 'UI/UX', 'Motion'];

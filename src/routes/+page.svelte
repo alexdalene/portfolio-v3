@@ -7,97 +7,91 @@
 	import { gsap, ScrollTrigger } from '$lib/gsap';
 	import { onMount } from 'svelte';
 
+	let ctx;
+
 	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
+		ctx = gsap.context(() => {
+			gsap.registerPlugin(ScrollTrigger);
 
-		gsap.from('.scroll-indicator', {
-			y: 6,
-			duration: 0.6,
-			repeat: -1,
-			yoyo: true,
-			ease: 'power1.inOut'
-		});
+			gsap.from('.scroll-indicator', {
+				y: 6,
+				duration: 0.6,
+				repeat: -1,
+				yoyo: true,
+				ease: 'power1.inOut'
+			});
 
-		gsap.to('.scroll-indicator', {
-			scrollTrigger: {
-				trigger: '.scroll-indicator',
-				start: 'top 80%',
-				end: 'bottom 40%'
-			},
-			opacity: 0,
-			display: 'none',
-			duration: 0.2
-		});
-
-		gsap.to('.hero', {
-			scrollTrigger: {
-				trigger: '.hero',
-				start: 'top top',
-				end: '+=100%',
-				scrub: 1,
-				pin: true,
-				ease: 'none'
-			},
-			yPercent: -10
-		});
-
-		// gsap.from('.showcase', {
-		// 	scrollTrigger: {
-		// 		trigger: '.showcase',
-		// 		start: 'top bottom',
-		// 		end: 'bottom 80%',
-		// 		scrub: 1
-		// 	},
-		// 	scale: 0.2,
-		// 	opacity: 0
-		// });
-
-		let words = gsap.utils.toArray('.section-text'),
-			tl = gsap.timeline(),
-			timePerCharacter = 0.05;
-
-		words.forEach((word, i) => {
-			let split = word.textContent.split(''),
-				chars = split.map((char) => {
-					let span = document.createElement('span');
-					span.textContent = char;
-					return span;
-				}),
-				charsWrapped = chars.map((char) => {
-					let wrapper = document.createElement('span');
-					wrapper.appendChild(char);
-					return wrapper;
-				});
-
-			word.innerHTML = '';
-
-			charsWrapped.forEach((char) => word.appendChild(char));
-			tl.from(chars, {
+			gsap.to('.scroll-indicator', {
 				scrollTrigger: {
-					trigger: word,
+					trigger: '.scroll-indicator',
 					start: 'top 80%',
+					end: 'bottom 40%'
+				},
+				opacity: 0,
+				display: 'none',
+				duration: 0.2
+			});
+
+			gsap.to('.hero', {
+				scrollTrigger: {
+					trigger: '.hero',
+					start: 'top top',
+					end: '+=100%',
+					scrub: 1,
+					pin: true,
+					ease: 'none'
+				},
+				yPercent: -10
+			});
+
+			let words = gsap.utils.toArray('.section-text'),
+				tl = gsap.timeline(),
+				timePerCharacter = 0.05;
+
+			words.forEach((word, i) => {
+				let split = word.textContent.split(''),
+					chars = split.map((char) => {
+						let span = document.createElement('span');
+						span.textContent = char;
+						return span;
+					}),
+					charsWrapped = chars.map((char) => {
+						let wrapper = document.createElement('span');
+						wrapper.appendChild(char);
+						return wrapper;
+					});
+
+				word.innerHTML = '';
+
+				charsWrapped.forEach((char) => word.appendChild(char));
+				tl.from(chars, {
+					scrollTrigger: {
+						trigger: word,
+						start: 'top 80%',
+						end: 'bottom 60%',
+						scrub: 1,
+						ease: 'none'
+					},
+					opacity: 0.2,
+					y: '+=100%',
+					stagger: timePerCharacter
+				});
+			});
+
+			gsap.from('.showcase-row', {
+				scrollTrigger: {
+					trigger: '.showcase',
+					start: 'top bottom',
 					end: 'bottom center',
 					scrub: 1
 				},
-				opacity: 0.2,
-				y: '+=100%',
-				stagger: timePerCharacter,
-				duration: 0.6,
-				ease: 'power3.inOut'
+				scale: 0.2,
+				opacity: 0,
+				stagger: 0.1
 			});
 		});
 
-		gsap.from('.showcase-row', {
-			scrollTrigger: {
-				trigger: '.showcase',
-				start: 'top bottom',
-				end: 'bottom center',
-				scrub: 1
-			},
-			scale: 0.2,
-			opacity: 0,
-			stagger: 0.1
-		});
+		return () => ctx.revert();
 	});
 </script>
 
@@ -172,10 +166,6 @@
 		<a href="https://www.linkedin.com/in/alex-dalene/" target="_blank">LinkedIn</a>
 	</div>
 </footer>
-
-<div class="scroll-indicator">
-	<span class="material-symbols-outlined arrow"> arrow_drop_down </span>
-</div>
 
 <style>
 	section {
@@ -300,20 +290,6 @@
 					margin: 0;
 				}
 			}
-		}
-	}
-
-	.scroll-indicator {
-		position: fixed;
-		bottom: 2rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-
-		& .arrow {
-			font-size: 2rem;
-			color: var(--black-color);
 		}
 	}
 </style>

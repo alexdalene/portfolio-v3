@@ -19,13 +19,6 @@
 		{:else}
 			MENY
 		{/if}
-		<span class="material-symbols-outlined">
-			{#if open}
-				menu_open
-			{:else}
-				menu
-			{/if}
-		</span>
 	</button>
 </header>
 

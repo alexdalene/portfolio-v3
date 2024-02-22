@@ -3,20 +3,26 @@
 
 	import { onMount } from 'svelte';
 
-	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
+	let ctx;
 
-		gsap.from('.history .item', {
-			scrollTrigger: {
-				trigger: '.history',
-				start: 'top bottom',
-				end: 'bottom center',
-				scrub: 1
-			},
-			yPercent: 100,
-			duration: 0.6,
-			stagger: 0.2
+	onMount(() => {
+		ctx = gsap.context(() => {
+			gsap.registerPlugin(ScrollTrigger);
+
+			gsap.from('.history .item', {
+				scrollTrigger: {
+					trigger: '.history',
+					start: 'top bottom',
+					end: 'bottom center',
+					scrub: 1
+				},
+				yPercent: 100,
+				duration: 0.6,
+				stagger: 0.2
+			});
 		});
+
+		return () => ctx.revert();
 	});
 
 	const history = [
@@ -53,7 +59,7 @@
 				<div class="item-wrapper">
 					<div class="item">
 						<div>
-							<h3>{item.year}</h3>
+							<span>{item.year}</span>
 						</div>
 						<div>
 							<h3>{item.company}</h3>

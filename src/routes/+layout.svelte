@@ -1,6 +1,7 @@
 <script>
-	import Navbar from '$lib/components/Navbar.svelte';
 	import { page } from '$app/stores';
+
+	import Navbar from '$lib/components/default/Navbar.svelte';
 	import Loading from '$lib/components/Loading.svelte';
 </script>
 
@@ -24,7 +25,6 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		width: 100%;
 		margin-top: -80px;
 	}
 </style>

@@ -3,20 +3,26 @@
 
 	import { onMount } from 'svelte';
 
-	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
+	let ctx;
 
-		gsap.from('.clients .item', {
-			scrollTrigger: {
-				trigger: '.clients',
-				start: 'top bottom',
-				end: 'bottom center',
-				scrub: 1
-			},
-			yPercent: 100,
-			duration: 0.6,
-			stagger: 0.2
+	onMount(() => {
+		ctx = gsap.context(() => {
+			gsap.registerPlugin(ScrollTrigger);
+
+			gsap.from('.clients .item', {
+				scrollTrigger: {
+					trigger: '.clients',
+					start: 'top bottom',
+					end: 'bottom center',
+					scrub: 1
+				},
+				yPercent: 100,
+				duration: 0.6,
+				stagger: 0.2
+			});
 		});
+
+		return () => ctx.revert();
 	});
 
 	const clients = ['Omsorgs kollektivet', 'Le Monde Tapas', 'Guttas Campus', 'Sound of Happiness'];
